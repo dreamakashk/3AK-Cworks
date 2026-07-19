@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>3AK-CWorks | Executive Brief</title>
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#06121f;
+    --card:#0d1b2f;
+    --card2:#122640;
+    --primary:#47c6ff;
+    --green:#16d98a;
+    --white:#ffffff;
+    --text:#d6deea;
+    --muted:#8fa3b9;
+}
+
+body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    background:var(--bg);
+    color:white;
+    line-height:1.6;
+}
+
+.page{
+    width:1120px;
+    margin:auto;
+    padding:70px;
+    min-height:100vh;
+    position:relative;
+    overflow:hidden;
+}
+
+.page::before{
+    content:"";
+    position:absolute;
+    width:900px;
+    height:900px;
+    right:-400px;
+    top:-300px;
+    background:radial-gradient(circle, rgba(71,198,255,.12), transparent 70%);
+    pointer-events:none;
+}
+
+h1{
+    font-size:70px;
+    line-height:1.1;
+    letter-spacing:-2px;
+    margin-bottom:18px;
+}
+
+h2{
+    font-size:42px;
+    margin-bottom:20px;
+    letter-spacing:-1px;
+}
+
+p{
+    color:var(--text);
+    font-size:20px;
+}
+
+.small{
+    font-size:15px;
+    color:var(--muted);
+}
+
+.badge{
+    display:inline-block;
+    padding:10px 18px;
+    border-radius:100px;
+    background:rgba(71,198,255,.12);
+    border:1px solid rgba(71,198,255,.35);
+    color:var(--primary);
+    font-weight:600;
+    margin-bottom:28px;
+}
+
+.hero{
+    display:grid;
+    grid-template-columns:60% 40%;
+    gap:60px;
+    align-items:center;
+}
+
+.metric-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.metric{
+    padding:28px;
+    background:linear-gradient(180deg,var(--card),var(--card2));
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,.06);
+}
+
+.metric h3{
+    font-size:44px;
+    color:var(--primary);
+    margin-bottom:10px;
+}
+
+.metric p{
+    font-size:15px;
+    color:var(--muted);
+}
+
+.quote{
+    margin-top:40px;
+    padding-left:24px;
+    border-left:4px solid var(--primary);
+    font-size:32px;
+    font-weight:700;
+    line-height:1.35;
+}
+
+.section{
+    margin-top:90px;
+}
+
+.section-title{
+    font-size:14px;
+    letter-spacing:3px;
+    color:var(--primary);
+    text-transform:uppercase;
+    margin-bottom:20px;
+}
+
+.compare{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:35px;
+    margin-top:30px;
+}
+
+.compare-card{
+    padding:35px;
+    background:linear-gradient(180deg,var(--card),var(--card2));
+    border-radius:22px;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.compare-card h3{
+    margin-bottom:25px;
+    font-size:24px;
+}
+
+.compare-card ul{
+    list-style:none;
+}
+
+.compare-card li{
+    padding:10px 0;
+    font-size:18px;
+    color:var(--text);
+}
+
+.compare-card li::before{
+    content:"• ";
+    color:var(--primary);
+}
+
+.platform{
+    margin-top:40px;
+    padding:45px;
+    border-radius:28px;
+    background:linear-gradient(135deg,#0f1f35,#173052);
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.platform h3{
+    font-size:30px;
+    margin-bottom:18px;
+}
+
+.loop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-top: 35px;
+}
+
+.node {
+    flex: 1;
+    background: rgba(255, 255, 255, .05);
+    border-radius: 18px;
+    padding: 24px 12px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, .06);
+}
+
+.loop-arrow {
+    flex-grow: 0;
+    flex-shrink: 0;
+    font-size: 24px;
+    color: var(--primary);
+    font-weight: bold;
+    user-select: none;
+}
+
+.screenshot-container {
+    margin-top: 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.screenshot-block {
+    background: var(--card);
+    border: 1px solid rgba(255, 255, 255, .08);
+    border-radius: 24px;
+    padding: 30px;
+}
+
+.screenshot-block h4 {
+    font-size: 22px;
+    color: var(--primary);
+    margin-bottom: 8px;
+}
+
+.screenshot-block p {
+    font-size: 16px;
+    color: var(--muted);
+    margin-bottom: 20px;
+}
+
+.screenshot-wrapper {
+    width: 100%;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, .15);
+    background: #000;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.screenshot-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.footer{
+    margin-top:70px;
+    color:var(--muted);
+    font-size:14px;
+}
+
+@media print{
+    body{
+        background: #ffffff !important;
+        color: #06121f !important;
+    }
+    .page{
+        width:auto;
+        padding:40px;
+    }
+    .metric, .compare-card, .platform, .node, .screenshot-block {
+        background: #f1f5f9 !important;
+        border: 1px solid #cbd5e1 !important;
+        color: #06121f !important;
+    }
+    h1, h2, .metric h3, .compare-card h3, .node h4, .platform h3, .screenshot-block h4 {
+        color: #0f172a !important;
+    }
+    p, li, .small {
+        color: #334155 !important;
+    }
+    .page::before {
+        display: none !important;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+<div class="badge">
+    AI Native • Live Production • Built From First Principles
+</div>
+
+<div class="hero">
+    <div>
+        <h1>Building the AI-Native Autonomous Wealth Management Platform</h1>
+        <p>3AK-CWorks is an AI-native decision intelligence platform that continuously researches markets, discovers investment opportunities, constructs portfolios, manages risk, executes trades, and learns from production outcomes.</p>
+        
+        <div class="quote">
+            Most investment systems automate trades.<br><br>
+            3AK-CWorks automates investment thinking.
+        </div>
+    </div>
+
+    <div class="metric-grid">
+        <div class="metric">
+            <h3>15+</h3>
+            <p>Years of market data used for research, experimentation and validation.</p>
+        </div>
+        <div class="metric">
+            <h3>100+</h3>
+            <p>Research experiments across multiple signals and environments.</p>
+        </div>
+        <div class="metric">
+            <h3>LIVE</h3>
+            <p>Currently executing with real capital in production.</p>
+        </div>
+        <div class="metric">
+            <h3>AI</h3>
+            <p>AI-built end-to-end for deep data research and system engineering.</p>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-title">WHY 3AK-CWORKS</div>
+    <h2>Beyond Algorithmic Trading</h2>
+
+    <div class="compare">
+        <div class="compare-card">
+            <h3>Traditional Investment Systems</h3>
+            <ul>
+                <li>Generate isolated trading signals</li>
+                <li>Depend heavily on human judgement</li>
+                <li>Limited adaptation after deployment</li>
+                <li>Strategies operate independently</li>
+                <li>Research, execution and learning remain disconnected</li>
+            </ul>
+        </div>
+        <div class="compare-card">
+            <h3>3AK-CWorks</h3>
+            <ul>
+                <li>Continuously understands market behaviour</li>
+                <li>Researches and validates new hypotheses</li>
+                <li>Ranks opportunities using multiple intelligence layers</li>
+                <li>Executes autonomously with disciplined risk management</li>
+                <li>Learns continuously from production outcomes</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-title">HOW 3AK-CWORKS THINKS</div>
+    <div class="platform">
+        <h3>An Intelligence Loop Rather Than A Trading Engine</h3>
+        <p>Every investment decision passes through multiple specialised intelligence layers before capital is committed.</p>
+        
+        <div class="loop">
+            <div class="node">
+                <h4>Understand</h4>
+                <div class="small">Market Intelligence</div>
+            </div>
+            <div class="loop-arrow">→</div>
+            <div class="node">
+                <h4>Research</h4>
+                <div class="small">Hypothesis Discovery</div>
+            </div>
+            <div class="loop-arrow">→</div>
+            <div class="node">
+                <h4>Decide</h4>
+                <div class="small">Decision Intelligence</div>
+            </div>
+            <div class="loop-arrow">→</div>
+            <div class="node">
+                <h4>Execute</h4>
+                <div class="small">Risk Controlled Execution</div>
+            </div>
+            <div class="loop-arrow">→</div>
+            <div class="node">
+                <h4>Learn</h4>
+                <div class="small">Continuous Improvement</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-title">RESEARCH DNA</div>
+    <h2>Evidence Before Capital</h2>
+    <p>Every capability inside 3AK-CWorks originates from first-principles thinking, extensive historical research, statistical validation, robustness testing and real-world production feedback. The platform is intentionally designed to evolve through evidence, not assumptions.</p>
+
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:45px;">
+        <div class="metric">
+            <h3 style="font-size:22px;">First Principles</h3>
+            <p>Every model starts from understanding market behaviour instead of fitting indicators.</p>
+        </div>
+        <div class="metric">
+            <h3 style="font-size:22px;">Hypothesis Driven</h3>
+            <p>Ideas are researched, challenged, validated, or rejected using historical evidence.</p>
+        </div>
+        <div class="metric">
+            <h3 style="font-size:22px;">Multi-Cycle Validation</h3>
+            <p>Tested across different market environments, corrections, momentum phases and volatility regimes.</p>
+        </div>
+        <div class="metric">
+            <h3 style="font-size:22px;">Stress Tested</h3>
+            <p>Robustness is prioritised over optimisation to avoid fragile systems.</p>
+        </div>
+        <div class="metric">
+            <h3 style="font-size:22px;">Production Feedback</h3>
+            <p>Live execution continuously feeds intelligence back into research.</p>
+        </div>
+        <div class="metric">
+            <h3 style="font-size:22px;">Continuous Evolution</h3>
+            <p>Research never stops. Every market cycle creates new learning opportunities.</p>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-title">CURRENT PRODUCTION</div>
+    <h2>HAMOC™ Production Intelligence</h2>
+    <p>The current production intelligence represents the latest generation of the research platform. Rather than exposing proprietary strategy logic, it demonstrates the maturity of the complete autonomous investment workflow.</p>
+
+    <div style="display:grid; grid-template-columns:42% 58%; gap:35px; margin-top:45px;">
+        <div class="platform" style="margin-top:0;">
+            <h3>Production Snapshot</h3>
+            <div style="margin-top:35px;">
+                <p>🟢 Status <span style="float:right;color:#16d98a;font-weight:700;">LIVE</span></p>
+                <hr style="margin:18px 0;border:none;border-top:1px solid rgba(255,255,255,.08);">
+                <p>Model <span style="float:right">HAMOC™ V6C-HI</span></p>
+                <hr style="margin:18px 0;border:none;border-top:1px solid rgba(255,255,255,.08);">
+                <p>Execution <span style="float:right">Autonomous</span></p>
+                <hr style="margin:18px 0;border:none;border-top:1px solid rgba(255,255,255,.08);">
+                <p>Risk Management <span style="float:right">Dynamic</span></p>
+                <hr style="margin:18px 0;border:none;border-top:1px solid rgba(255,255,255,.08);">
+                <p>Learning <span style="float:right">Continuous</span></p>
+            </div>
+        </div>
+
+        <div>
+            <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:20px;">
+                <div class="metric">
+                    <h3 style="font-size:20px;">Market Intelligence</h3>
+                    <p>Regime recognition, market participation, liquidity, relative strength, breadth and momentum.</p>
+                </div>
+                <div class="metric">
+                    <h3 style="font-size:20px;">Decision Intelligence</h3>
+                    <p>Ranks opportunities, allocates capital, measures conviction and controls exposure.</p>
+                </div>
+                <div class="metric">
+                    <h3 style="font-size:20px;">Execution Intelligence</h3>
+                    <p>Autonomous order execution, position management, adaptive exits and trailing logic.</p>
+                </div>
+                <div class="metric">
+                    <h3 style="font-size:20px;">Learning Intelligence</h3>
+                    <p>Production outcomes continuously improve research and future decision quality.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ========================================================= -->
+<!-- RECENT PRODUCTION PERFORMANCE -->
+<!-- ========================================================= -->
+<div class="section">
+    <div class="section-title">PRODUCTION PERFORMANCE</div>
+    <h2>Recent Execution Fidelity</h2>
+    <p>A selection of recent alpha capture outcomes generated, managed, and closed autonomously by the live production intelligence layer during the current market phase.</p>
+
+    <div style="margin-top: 35px; background: linear-gradient(180deg, var(--card), var(--card2)); border: 1px solid rgba(255, 255, 255, .06); border-radius: 24px; padding: 30px;">
+        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 16px;">
+            <thead>
+                <tr style="border-bottom: 2px solid rgba(255, 255, 255, .1); color: var(--muted); font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">
+                    <th style="padding: 12px 24px;">Entry Date</th>
+                    <th style="padding: 12px 24px;">Symbol</th>
+                    <th style="padding: 12px 24px; text-align: center;">Days in Trade</th>
+                    <th style="padding: 12px 24px; text-align: right;">Profit Captured</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid rgba(255, 255, 255, .05);">
+                    <td style="padding: 16px 24px; color: var(--text);">2026-07-17</td>
+                    <td style="padding: 16px 24px; font-weight: 700; color: var(--white);">AURUM</td>
+                    <td style="padding: 16px 24px; text-align: center; color: var(--primary); font-weight: 600;">31</td>
+                    <td style="padding: 16px 24px; text-align: right; font-weight: 700; color: var(--green);">+19.78%</td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(255, 255, 255, .05);">
+                    <td style="padding: 16px 24px; color: var(--text);">2026-07-14</td>
+                    <td style="padding: 16px 24px; font-weight: 700; color: var(--white);">ASTRAMICRO</td>
+                    <td style="padding: 16px 24px; text-align: center; color: var(--primary); font-weight: 600;">27</td>
+                    <td style="padding: 16px 24px; text-align: right; font-weight: 700; color: var(--green);">+8.60%</td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(255, 255, 255, .05);">
+                    <td style="padding: 16px 24px; color: var(--text);">2026-07-08</td>
+                    <td style="padding: 16px 24px; font-weight: 700; color: var(--white);">MSTCLTD</td>
+                    <td style="padding: 16px 24px; text-align: center; color: var(--primary); font-weight: 600;">26</td>
+                    <td style="padding: 16px 24px; text-align: right; font-weight: 700; color: var(--green);">+16.20%</td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(255, 255, 255, .05);">
+                    <td style="padding: 16px 24px; color: var(--text);">2026-07-06</td>
+                    <td style="padding: 16px 24px; font-weight: 700; color: var(--white);">CUPID</td>
+                    <td style="padding: 16px 24px; text-align: center; color: var(--primary); font-weight: 600;">31</td>
+                    <td style="padding: 16px 24px; text-align: right; font-weight: 700; color: var(--green);">+45.00%</td>
+                </tr>
+                <tr style="border-bottom: 1px solid rgba(255, 255, 255, .05);">
+                    <td style="padding: 16px 24px; color: var(--text);">2026-07-02</td>
+                    <td style="padding: 16px 24px; font-weight: 700; color: var(--white);">AVL</td>
+                    <td style="padding: 16px 24px; text-align: center; color: var(--primary); font-weight: 600;">16</td>
+                    <td style="padding: 16px 24px; text-align: right; font-weight: 700; color: var(--green);">+8.00%</td>
+                </tr>
+                <tr style="border-bottom: none;">
+                    <td style="padding: 16px 24px; color: var(--text);">2026-06-25</td>
+                    <td style="padding: 16px 24px; font-weight: 700; color: var(--white);">RICOAUTO</td>
+                    <td style="padding: 16px 24px; text-align: center; color: var(--primary); font-weight: 600;">20</td>
+                    <td style="padding: 16px 24px; text-align: right; font-weight: 700; color: var(--green);">+7.00%</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-title">PLATFORM FOUNDATION</div>
+    <h2>An AI Operating System, Not Just A Trading Strategy</h2>
+    <p>3AK-CWorks has been designed as a modular intelligence platform. Each capability can evolve independently while continuously contributing to the overall quality of investment decisions.</p>
+
+    <div style="margin-top:50px; display:grid; grid-template-columns:repeat(4,1fr); gap:20px;">
+        <div class="metric">
+            <h3 style="font-size:18px;">Research Engine</h3>
+            <p>Idea generation, feature engineering, strategy discovery and validation.</p>
+        </div>
+        <div class="metric">
+            <h3 style="font-size:18px;">Decision Engine</h3>
+            <p>Opportunity scoring, ranking, portfolio construction and capital allocation.</p>
+        </div>
+        <div class="metric">
+            <h3 style="font-size:18px;">Execution Engine</h3>
+            <p>Autonomous execution, risk controls, trade management and monitoring.</p>
+        </div>
+        <div class="metric">
+            <h3 style="font-size:18px;">Learning Engine</h3>
+            <p>Trade analytics, feedback loops, continuous improvement and future evolution.</p>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-title">WHERE WE ARE GOING</div>
+    <h2>The Future Is Autonomous Investing</h2>
+    <p>
+        Today's investment industry largely automates execution while leaving research, reasoning and portfolio decisions dependent on human expertise.
+        <br><br>
+        3AK-CWorks takes a fundamentally different approach. It is being built as an AI-native operating system capable of continuously understanding markets, generating research, constructing portfolios, managing risk and improving itself through production feedback.
+        <br><br>
+        The long-term vision extends well beyond systematic trading. It is the foundation for a continuously learning autonomous wealth management platform.
+    </p>
+</div>
+
+<div class="section">
+    <div class="section-title">WHY THIS IS DIFFERENT</div>
+    <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:28px;">
+        <div class="metric">
+            <h3 style="font-size:24px;">Technology First</h3>
+            <p>Built as a software platform rather than a collection of trading strategies. Each capability evolves independently while contributing to the overall intelligence of the system.</p>
+        </div>
+        <div class="metric">
+            <h3 style="font-size:24px;">Evidence First</h3>
+            <p>Research decisions are driven by statistical validation, historical evidence, live production observations and continuous refinement.</p>
+        </div>
+        <div class="metric">
+            <h3 style="font-size:24px;">AI Native</h3>
+            <p>Artificial Intelligence is integrated throughout the research, decision making and learning workflow rather than added as a separate feature.</p>
+        </div>
+        <div class="metric">
+            <h3 style="font-size:24px;">Autonomous by Design</h3>
+            <p>From market understanding to execution and learning, the platform is designed to minimize manual intervention while maintaining disciplined risk management.</p>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="platform">
+        <h3>Current Stage</h3>
+        <p style="margin-top:20px; font-size: 18px;">
+            ✓ Years of quantitative research and experimentation<br><br>
+            ✓ AI-native investment operating system designed and implemented<br><br>
+            ✓ Multiple generations of investment intelligence developed<br><br>
+            ✓ Current production intelligence deployed with live capital<br><br>
+            ✓ Continuous research pipeline operating alongside production<br><br>
+            ✓ Building toward a fully autonomous wealth management platform
+        </p>
+
+        <!-- ========================================================= -->
+        <!-- PLATFORM INTERFACE VISUALIZATIONS -->
+        <!-- ========================================================= -->
+        <div class="screenshot-container">
+            
+            <!-- 1st: Market Intelligence -->
+            <div class="screenshot-block">
+                <h4>01 / Market Intelligence Dashboard</h4>
+                <p>Autonomous regime tracking matrix mapping capital preservation conditions, technical gauges, historical analogues, and strategy fit variations.</p>
+                <div class="screenshot-wrapper">
+                    <img src="pic1.png" alt="Market Intelligence Dashboard">
+                </div>
+            </div>
+
+            <!-- 2nd: Sectors and Industries -->
+            <div class="screenshot-block">
+                <h4>02 / Sector & Industry Rotation Architecture</h4>
+                <p>Real-time rank momentum and RS trajectory tracking engine breaking down sector allocation strength, institutional participation, and rotation dynamics.</p>
+                <div class="screenshot-wrapper">
+                    <img src="pic2.png" alt="Sectors and Industries Matrix">
+                </div>
+            </div>
+
+            <!-- 3rd: Strategies -->
+            <div class="screenshot-block">
+                <h4>03 / Multi-Generation Strategy Matrix</h4>
+                <p>Comprehensive quantitative tracking layer validating historical parameters across diverse model iterations, tracking CAGR, Max Drawdown, Sharpe, and Win Ratios.</p>
+                <div class="screenshot-wrapper">
+                    <img src="pic3.png" alt="Strategies Evaluation Engine">
+                </div>
+            </div>
+
+            <!-- 4th: Trade Reviewers and Journaling -->
+            <div class="screenshot-block">
+                <h4>04 / Deep Trade Diagnostics & Journaling</h4>
+                <p>Granular trade-by-trade analytics tracking execution entry fidelity, initial stops, Maximum Adverse Excursion (MAE), and trailing-stop performance variables.</p>
+                <div class="screenshot-wrapper">
+                    <img src="pic4.png" alt="Trade Reviewers and Journaling Layer">
+                </div>
+            </div>
+
+            <!-- 5th: Stock Scan and Intelligence Signals -->
+            <div class="screenshot-block">
+                <h4>05 / Real-time Stock Scanner & Qualification Matrix</h4>
+                <p>Active opportunity discovery matrix calculating momentum lifecycles, institutional accumulation metrics, safety filters, and qualification indicators.</p>
+                <div class="screenshot-wrapper">
+                    <img src="pic5.png" alt="Stock Scan and Intelligence Signals Panel">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div style="margin-top:90px; padding:45px; border-radius:24px; background:linear-gradient(135deg,#102642,#17385e); border:1px solid rgba(255,255,255,.08);">
+    <h2 style="margin-bottom:18px;">3AK-CWorks™</h2>
+    <p style="font-size:24px; line-height:1.7;">
+        Most investment platforms optimize execution.<br><br>
+        3AK-CWorks is being built to optimize investment intelligence itself.<br><br>
+        By combining AI reasoning, quantitative research, market intelligence, portfolio construction, execution and continuous learning into a unified operating system, the objective is to fundamentally rethink how investment decisions are made.
+    </p>
+</div>
+
+<div class="footer">
+    <hr style="border:none; border-top:1px solid rgba(255,255,255,.08); margin-bottom:25px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; gap: 20px; flex-wrap: wrap;">
+        <div>
+            <strong>3AK-CWorks™</strong><br>
+            <span style="font-size: 13px; color: var(--muted);">AI-Native Autonomous Wealth Management Platform</span>
+        </div>
+        <div style="text-align:center; font-size: 13px; color: #ff6b6b; font-weight: 500; letter-spacing: 0.5px;">
+            ⚠️ PRIVATE PROPERTY — STRICTLY CONFIDENTIAL
+        </div>
+        <div style="text-align:right; font-size: 13px;">
+            Get in touch: <a href="mailto:akash.dglass@gmail.com" style="color: var(--primary); text-decoration: none; font-weight: 600;">akash.dglass@gmail.com</a><br>
+            <span style="color: var(--muted); font-size: 12px;">Executive Brief • For Discussion purpose only</span>
+        </div>
+    </div>
+</div>
+
+</div>
+</body>
+</html>
